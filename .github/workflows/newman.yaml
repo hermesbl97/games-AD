@@ -19,4 +19,4 @@ jobs:
       - run: docker compose up -d
       - run: sleep 3
       - run: npm install -g newman
-      - run: newman run -e games.postman_collection.json -e local.postman_environment.json
+      - run: newman run games.postman_collection.json -e local.postman_environment.json
