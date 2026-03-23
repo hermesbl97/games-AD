@@ -4,15 +4,16 @@ services:
   games-db:
     image: mariadb:11.3.2
     container_name: games-db
+    restart: always
     environment:
-      MARIADB_DATABASE: $MYSQL_DATABASE
-      MARIADB_USER: $MYSQL_USER
-      MARIADB_PASSWORD: $MYSQL_PASSWORD
-      MARIADB_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      MARIADB_DATABASE: games_database
+      MARIADB_USER: games_user
+      MARIADB_PASSWORD: games_password
+      MARIADB_ROOT_PASSWORD: rootpassword
     ports:
       - "3307:3306"
     healthcheck:
-      test: [ CMD, healthcheck.sh, --connect, --innodb_initialized]
+      test: [ CMD, healthcheck.sh, --connect, --innodb_initialized ]
       interval: 5s
       timeout: 3s
       retries: 3
