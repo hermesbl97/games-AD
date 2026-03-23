@@ -38,6 +38,7 @@ public class GameService {
 //        List <Game> allGames= gameRepository.findAll();
 //        return allGames;
 //    }
+    //
 
     public List<GameOutDto> findAll(String category) {
         List <Game> games;
