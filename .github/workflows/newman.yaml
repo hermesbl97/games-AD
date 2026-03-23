@@ -15,7 +15,7 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
       - run: mvn package
-      - run: docker-build -t games-api .
+      - run: docker build -t games-api .
       - run: docker compose up -d
       - run: sleep 3
       - run: npm install -g newman
