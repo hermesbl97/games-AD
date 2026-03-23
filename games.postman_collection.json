@@ -1,0 +1,588 @@
+{
+	"info": {
+		"_postman_id": "d4d40c52-e190-4aa7-9eb6-cd13f5717c2f",
+		"name": "games",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "53185945",
+		"_collection_link": "https://a28704-4287345.postman.co/workspace/HERMES-(2SIO)-BARRIGA-LONG%C3%A1S's-~42e800b3-aa4c-41cc-827b-b9d925c5f1de/collection/53185945-d4d40c52-e190-4aa7-9eb6-cd13f5717c2f?action=share&source=collection_link&creator=53185945"
+	},
+	"item": [
+		{
+			"name": "games",
+			"item": [
+				{
+					"name": "/games",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonResponse = pm.response.json();",
+									"",
+									"pm.test(\"Successful POST request\",() => {",
+									"    pm.expect(pm.response.code).to.eql(201);",
+									"});",
+									"",
+									"pm.test(\"response structure is ok\", () =>  {",
+									"    pm.expect(pm.response.json()).to.have.property(\"id\");",
+									"    pm.expect(pm.response.json()).to.have.property(\"name\");",
+									"    pm.expect(pm.response.json()).to.have.property(\"description\");",
+									"    pm.expect(pm.response.json()).to.have.property(\"type\");",
+									"    pm.expect(pm.response.json()).to.have.property(\"releaseDate\");",
+									"    pm.expect(pm.response.json()).to.have.property(\"price\");",
+									"    pm.expect(pm.response.json()).to.have.property(\"category\");",
+									"    pm.expect(pm.response.json()).to.have.property(\"comments\");",
+									"",
+									"    pm.expect(jsonResponse.id).to.be.a('number');",
+									"    pm.expect(jsonResponse.name).to.be.a('string');",
+									"    pm.expect(jsonResponse.description).to.be.a('string');",
+									"    pm.expect(jsonResponse.type).to.be.a('string');",
+									"    pm.expect(jsonResponse.releaseDate).to.be.a('string');",
+									"    pm.expect(jsonResponse.price).to.be.a('number');",
+									"    pm.expect(jsonResponse.category).to.be.a('string');",
+									"});",
+									"",
+									"pm.collectionVariables.set(\"gameId\", pm.response.json().id);"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"{{name1}}\",\n    \"description\": \"{{$randomPhrase}}\",\n    \"type\": \"{{type1}}\",\n    \"releaseDate\": \"{{releaseDate}}\",\n    \"price\": {{$randomPrice}},\n    \"category\": \"{{category1}}\",\n    \"comments\": \"{{$randomLoremSentence}}\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/games",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"games"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "/games/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {",
+									"    pm.expect(pm.response.code).to.eql(200);",
+									"",
+									"});",
+									"",
+									"pm.test(\"response structure is ok\", () =>  {",
+									"    pm.expect(pm.response.json()).to.have.property('id');",
+									"    pm.expect(pm.response.json()).to.have.property('name');",
+									"    pm.expect(pm.response.json()).to.have.property('description');",
+									"    pm.expect(pm.response.json()).to.have.property('type');",
+									"    pm.expect(pm.response.json()).to.have.property('releaseDate');",
+									"    pm.expect(pm.response.json()).to.have.property('price');",
+									"    pm.expect(pm.response.json()).to.have.property('category');",
+									"    pm.expect(pm.response.json()).to.have.property('daysToRelease');",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/games/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"games",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/games Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\",() => {",
+									"    pm.expect(pm.response.code).to.eql(201);",
+									"});",
+									"",
+									"pm.test(\"response structure is ok\", () =>  {",
+									"    pm.expect(pm.response.json()).to.have.property(\"id\");",
+									"    pm.expect(pm.response.json()).to.have.property(\"name\");",
+									"    pm.expect(pm.response.json()).to.have.property(\"description\");",
+									"    pm.expect(pm.response.json()).to.have.property(\"type\");",
+									"    pm.expect(pm.response.json()).to.have.property(\"releaseDate\");",
+									"    pm.expect(pm.response.json()).to.have.property(\"price\");",
+									"    pm.expect(pm.response.json()).to.have.property(\"category\");",
+									"    pm.expect(pm.response.json()).to.have.property(\"comments\");",
+									"});",
+									"",
+									"pm.collectionVariables.set(\"gameId\", pm.response.json().id);"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"{{name2}}\",\n    \"description\": \"{{$randomPhrase}}\",\n    \"type\": \"{{type2}}\",\n    \"releaseDate\": \"{{releaseDate}}\",\n    \"price\": {{$randomPrice}},\n    \"category\": \"{{category2}}\",\n    \"comments\": \"{{$randomLoremSentence}}\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/games",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"games"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "/games/:id (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", () => {",
+									"    pm.expect(pm.response.code).to.eql(404);",
+									"",
+									"});",
+									"",
+									"pm.test(\"response structure is ok\", () =>  {",
+									"    pm.expect(pm.response.json()).to.have.property('code');",
+									"    pm.expect(pm.response.json()).to.have.property('title');",
+									"    pm.expect(pm.response.json()).to.have.property('message');",
+									"    pm.expect(pm.response.json()).to.have.property('errors');",
+									"});",
+									"",
+									"pm.test(\"error code is 404\", () => {",
+									"    pm.expect(pm.response.json().code).eql(404);",
+									"    pm.expect(pm.response.json().title).eql(\"not-found\");",
+									"    pm.expect(pm.response.json().message).eql(\"The game does not exist\");",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/games/999999",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"games",
+								"999999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/games (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"status code is 400\",() => {",
+									"    pm.expect(pm.response.code).to.eql(400);",
+									"});",
+									"",
+									"pm.test(\"error response structure is ok\", () =>  {",
+									"    pm.expect(pm.response.json()).to.have.property('code');",
+									"    pm.expect(pm.response.json()).to.have.property('title');",
+									"    pm.expect(pm.response.json()).to.have.property('message');",
+									"    pm.expect(pm.response.json()).to.have.property('errors');",
+									"});",
+									"",
+									"pm.test(\"error values are ok\", () => {",
+									"    pm.expect(pm.response.json().code).eql(400);",
+									"    pm.expect(pm.response.json().title).eql(\"bad-request\");",
+									"    pm.expect(pm.response.json().message).eql('<Validation error>');",
+									"    pm.expect(pm.response.json().errors.name).eql('Name is mandatory');",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"{{$randomPhrase}}\",\n    \"type\": \"{{type2}}\",\n    \"releaseDate\": \"{{releaseDate}}\",\n    \"price\": {{$randomPrice}},\n    \"category\": \"{{category2}}\",\n    \"comments\": \"{{$randomLoremSentence}}\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/games",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"games"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "/games",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {",
+									"    pm.expect(pm.response.code).to.eql(200);",
+									"});",
+									"",
+									"pm.test(\"response has two items\", () => {",
+									"    pm.expect(pm.response.json()).to.have.lengthOf(2);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/games",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"games"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "Survival",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "/games/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {",
+									"    pm.expect(pm.response.code).to.eql(200);",
+									"",
+									"});",
+									"",
+									"pm.test(\"response structure is ok\", () =>  {",
+									"    pm.expect(pm.response.json()).to.have.property('id');",
+									"    pm.expect(pm.response.json()).to.have.property('name');",
+									"    pm.expect(pm.response.json()).to.have.property('description');",
+									"    pm.expect(pm.response.json()).to.have.property('type');",
+									"    pm.expect(pm.response.json()).to.have.property('releaseDate');",
+									"    pm.expect(pm.response.json()).to.have.property('price');",
+									"    pm.expect(pm.response.json()).to.have.property('category');",
+									"})",
+									"",
+									"pm.test(\"data has changed\", () => {",
+									"    pm.expect(pm.response.json().name).to.equal(pm.collectionVariables.get(\"changedName\"));",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"{{changedName}}\",\n    \"description\": \"{{$randomPhrase}}\",\n    \"type\": \"{{type2}}\",\n    \"releaseDate\": \"{{releaseDate}}\",\n    \"price\": {{$randomPrice}},\n    \"category\": \"{{category2}}\",\n    \"comments\": \"{{$randomLoremSentence}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/games/{{gameId}}",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"games",
+								"{{gameId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/games/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"status code is 204\", () => {",
+									"    pm.expect(pm.response.code).to.eql(204);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/games/{{gameId}}",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"games",
+								"{{gameId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/games/:id(404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"status code is 404\", () => {",
+									"    pm.expect(pm.response.code).to.eql(404);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/games/{{gameId}}",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"games",
+								"{{gameId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/games?category=:category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonResponse = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 200\", () => {",
+									"    pm.expect(pm.response.code).to.eql(200);",
+									"",
+									"});",
+									"",
+									"pm.test(\"response has one item\", () =>  {",
+									"    pm.expect(jsonResponse).to.have.lengthOf(1);",
+									"})",
+									"",
+									"pm.test(\"data is correct\", () =>  {",
+									"    pm.expect(jsonResponse[0].name).to.eql(pm.collectionVariables.get(\"name1\"));",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/games?category=Survival",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"games"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "Survival"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "gameId",
+			"value": "2"
+		},
+		{
+			"key": "releaseDate",
+			"value": "2021-03-15"
+		},
+		{
+			"key": "name1",
+			"value": "7 Days to Die"
+		},
+		{
+			"key": "description",
+			"value": "Survival game"
+		},
+		{
+			"key": "type1",
+			"value": "Survival"
+		},
+		{
+			"key": "category1",
+			"value": "Survival"
+		},
+		{
+			"key": "name2",
+			"value": "Grand Theft Auto V"
+		},
+		{
+			"key": "type2",
+			"value": "Open World"
+		},
+		{
+			"key": "category2",
+			"value": "Open World"
+		},
+		{
+			"key": "changedName",
+			"value": "Half Life 3"
+		}
+	]
+}

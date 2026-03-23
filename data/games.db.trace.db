@@ -1,0 +1,31 @@
+2025-10-11 11:55:19.971206+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "games" not found (this database is empty); SQL statement:
+select * from "games" [42104-232]
+2025-10-11 11:55:37.055041+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "select * from [*]'games'"; se esperaba "identifier"
+Syntax error in SQL statement "select * from [*]'games'"; expected "identifier"; SQL statement:
+select * from 'games' [42001-232]
+2025-10-11 11:55:53.183352+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "GAMES" not found (this database is empty); SQL statement:
+select * from games [42104-232]
+2025-10-11 11:55:56.011476+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "GAMES" not found (this database is empty); SQL statement:
+select * from games [42104-232]
+2025-10-11 11:56:15.669326+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "games" not found (this database is empty); SQL statement:
+select * from "games" [42104-232]
+2025-10-11 12:06:04.489577+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "GAMES" not found (this database is empty); SQL statement:
+select g1_0.id,g1_0.description,g1_0.name,g1_0.price,g1_0.release_date,g1_0.type from games g1_0 [42104-232]
+2025-10-11 12:06:13.322394+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "GAMES" not found (this database is empty); SQL statement:
+select g1_0.id,g1_0.description,g1_0.name,g1_0.price,g1_0.release_date,g1_0.type from games g1_0 [42104-232]
+2025-10-11 12:09:48.892096+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "games" not found (candidates are: "GAMES"); SQL statement:
+select * from "games" [42103-232]
+2025-10-11 12:09:52.125070+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "games" not found (candidates are: "GAMES"); SQL statement:
+select * from "games" [42103-232]
+2025-10-12 15:43:55.399048+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "games" not found (candidates are: "GAMES"); SQL statement:
+select * from "games" [42103-232]

@@ -1,0 +1,47 @@
+name: games
+
+services:
+  games-db:
+    image: mariadb:11.3.2
+    container_name: games-db
+    environment:
+      MARIADB_DATABASE: $MYSQL_DATABASE
+      MARIADB_USER: $MYSQL_USER
+      MARIADB_PASSWORD: $MYSQL_PASSWORD
+      MARIADB_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+    ports:
+      - "3307:3306"
+    healthcheck:
+      test: [ CMD, healthcheck.sh, --connect, --innodb_initialized]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+    networks:
+      - network-games
+
+  games-api:
+    image: games-api
+    container_name: games-api
+    ports:
+      - "8080:8080"
+    depends_on:
+      games-db:
+        condition: service_healthy
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "spring.application.name": "games",
+        "server.port": "8080",
+
+        "spring.jpa.hibernate.ddl-auto": "update",
+        "spring.jpa.properties.hibernate.globally_quoted_identifiers": "true",
+
+        "spring.datasource.url": "jdbc:mariadb://games-db:3306/games_database",
+        "spring.datasource.username": "games_user",
+        "spring.datasource.password": "games_password",
+        "spring.jpa.database-platform": "org.hibernate.dialect.MariaDBDialect"
+      }'
+    networks:
+      - network-games
+networks:
+  network-games:
+    driver: bridge
